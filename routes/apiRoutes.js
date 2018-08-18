@@ -4,22 +4,44 @@ var db = require("../models");
 
 module.exports = function(app) {
   // Get all examples
-  app.get("/api/startups", function(req, res) {
-    db.Startups.findAll({}).then(function(dbExamples) {
+  app.get("/api", function(req, res) {
+    db.startups.findAll({}).then(function(dbExamples) {
+      console.log("findaAll " + dbExamples);
+      for (let obj of dbExamples) {
+        console.log(obj.id);
+        
+      }
       res.json(dbExamples);
     });
   });
 
+  app.get("/api/category/:main_category", function(req, res){
+    db.startups.findAll({
+      where: { main_category: req.params.main_category }
+    }).then(function(dbExamples){
+      res.json(dbExamples);
+    })
+  });
+
+  app.get("/api/country/:country", function(req, res){
+    db.startups.findAll({
+      where: { country: req.params.country }
+    }).then(function(dbExamples){
+      res.json(dbExamples);
+    })
+  });
+
   // Create a new example
   app.post("/api/startups", function(req, res) {
-    db.Startups.create(req.body).then(function(dbExample) {
+    db.startups.create(req.body).then(function(dbExample) {
+      console.log("create " + dbExamples);
+      for (obj of dbExamples) {
+        console.log(obj);
+      }
       res.json(dbExample);
     });
   });
 
   // Delete an example by id
-  app.Startups.destroy({ where: { id: req.params.id } }).then(function(dbExample) {
-      res.json(dbExample);
-    });
-  });
-};
+  };
+

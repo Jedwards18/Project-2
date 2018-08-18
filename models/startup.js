@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
-  var Startup = sequelize.define("startup", {
-    name: DataTypes.STRING,
+  var Startup = sequelize.define("startups", {
+    project_name: DataTypes.STRING,
     category: DataTypes.STRING,
     main_category: DataTypes.STRING,
     currency: DataTypes.STRING,
@@ -14,6 +14,9 @@ module.exports = function(sequelize, DataTypes) {
     usd_pledged: DataTypes.DECIMAL(13,2),
     usd_pledged_real: DataTypes.DECIMAL(13,2),
     usd_goal_real: DataTypes.DECIMAL(13,2)
-  });
-  return Example;
+  }, {
+    timestamps: false
+});
+  console.log(Startup);
+  return Startup;
 };
