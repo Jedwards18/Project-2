@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "root",
-    "password": "hobgoblin",
-    "database": "exampledb",
-    "host": "localhost",
+    "username": "mou8bnuds1ieazfs",
+    "password": "v2gfqd28kq86a1b4",
+    "database": "mpocm5x3vncc06sx",
+    "host": "blonze2d5mrbmcgf.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
     "dialect": "mysql"
   },
   "test": {
