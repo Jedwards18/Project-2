@@ -3,18 +3,15 @@ var db = require("../models");
 // THESE ARE JUST SET UP FOR NOW, WILL FIX LATER ONCE WE KNOW WHERE WE'RE ROUTING DATA, PL 8/17
 
 module.exports = function(app) {
-  // Get all examples
+  //not exactly sure what to do with this yet or if selecting all the data at once is necessary...
   app.get("/api", function(req, res) {
     db.startups.findAll({}).then(function(dbExamples) {
       console.log("findaAll " + dbExamples);
-      for (let obj of dbExamples) {
-        console.log(obj.id);
-        
-      }
-      res.json(dbExamples);
+        res.json(dbExamples);    
     });
   });
 
+//gets all data for category picked by user..
   app.get("/api/category/:main_category", function(req, res){
     db.startups.findAll({
       where: { main_category: req.params.main_category }
@@ -23,6 +20,7 @@ module.exports = function(app) {
     })
   });
 
+//gets all data for country picked by user..
   app.get("/api/country/:country", function(req, res){
     db.startups.findAll({
       where: { country: req.params.country }
@@ -31,7 +29,7 @@ module.exports = function(app) {
     })
   });
 
-  // Create a new example
+  // Our create route that needs to be finished once we figure out what we're posting..
   app.post("/api/startups", function(req, res) {
     db.startups.create(req.body).then(function(dbExample) {
       console.log("create " + dbExamples);
@@ -42,6 +40,5 @@ module.exports = function(app) {
     });
   });
 
-  // Delete an example by id
   };
 
