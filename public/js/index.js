@@ -100,10 +100,43 @@
 
 // //--------------------------------------//
 
-$(document).ready(function(){
-  $('select').formSelect();
-});
+//Functions to hide and show containers//
 
-$(function () {
-  $('[data-toggle="popover"]').popover()
-})
+const hideTableContainer = function() {
+  $(".table-container").hide();
+}; const showTableContainer = function() {
+  $(".table-container").show();
+}; const hideFormContainer = function() {
+  $(".form-container").hide();
+}; const showFormContainer = function() {
+  $(".form-container").show();
+};
+
+//Front-end JavaScript//
+$(document).ready(function(){
+  hideTableContainer();
+
+  $(function () {
+    $('[data-toggle="popover"]').popover()
+  });
+
+  $('#myModal').on('shown.bs.modal', function () {
+    $('#myInput').trigger('focus')
+  });
+
+  $("#display-results-data").on("click", function() {
+    hideFormContainer();
+    showTableContainer();
+  });
+
+  $("#edit-project-info-button").on("click", function() {
+    showFormContainer();
+    hideTableContainer();
+  });
+
+  $("#clear-form-button").on("click", function() {
+    hideTableContainer();
+    showFormContainer();
+    $("#new-project-form")[0].reset();
+  });
+});
