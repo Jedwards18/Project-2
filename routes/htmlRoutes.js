@@ -7,14 +7,7 @@ module.exports = function (app) {
       msg: "Welcome!",
     });
   });
-
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function (req, res) {
-    res.render("example", {
-      example: dbExample
-    });
-  });
-
+  
   // Render 404 page for any unmatched routes
   app.get("*", function (req, res) {
     res.render("404");
