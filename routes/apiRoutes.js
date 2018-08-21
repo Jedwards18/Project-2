@@ -5,9 +5,8 @@ var db = require("../models");
 module.exports = function(app) {
   //not exactly sure what to do with this yet or if selecting all the data at once is necessary...
   app.get("/api", function(req, res) {
-    db.startups.findAll({}).then(function(dbExamples) {
-      console.log("findaAll " + dbExamples);
-        res.json(dbExamples);    
+    db.startups.findAll({}).then(function(dbResults) {
+      res.render('index', { dbResults });
     });
   });
 
@@ -15,8 +14,8 @@ module.exports = function(app) {
   app.get("/api/category/:main_category", function(req, res){
     db.startups.findAll({
       where: { main_category: req.params.main_category }
-    }).then(function(dbExamples){
-      res.json(dbExamples);
+    }).then(function(categoryResults){
+      res.render('index', { categoryResults });
     })
   });
 
@@ -24,8 +23,8 @@ module.exports = function(app) {
   app.get("/api/country/:country", function(req, res){
     db.startups.findAll({
       where: { country: req.params.country }
-    }).then(function(dbExamples){
-      res.json(dbExamples);
+    }).then(function(countryResults){
+      res.render('index', { countryResults });
     })
   });
 
@@ -36,19 +35,15 @@ module.exports = function(app) {
         main_category: req.params.main_category,
         country: req.params.country
       }
-    }).then(function(dbExamples){
-      res.json(dbExamples);
+    }).then(function(categoryCountryData){
+      res.render('index', { categoryCountryData });
     });
   });
 
   // Our create route that needs to be finished once we figure out what we're posting..
   app.post("/api/startups", function(req, res) {
     db.startups.create(req.body).then(function(dbExample) {
-      console.log("create " + dbExamples);
-      for (obj of dbExamples) {
-        console.log(obj);
-      }
-      res.json(dbExample);
+      res.redirect("/");
     });
   });
 
