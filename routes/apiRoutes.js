@@ -29,8 +29,20 @@ module.exports = function(app) {
     })
   });
 
+// gets all data by country and category together
+app.get("/api/:country/:main_category", function(req, res){
+  db.startups.findAll({
+    where: { 
+      main_category: req.params.main_category,
+      country: req.params.country
+    }
+  }).then(function(dbExamples){
+    res.json(dbExamples);
+  });
+});
+
   // Our create route that needs to be finished once we figure out what we're posting..
-  app.post("/api/startups", function(req, res) {
+  app.post("/api", function(req, res) {
     db.startups.create(req.body).then(function(dbExample) {
       console.log("create " + dbExamples);
       for (obj of dbExamples) {

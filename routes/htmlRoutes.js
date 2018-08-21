@@ -8,7 +8,6 @@ module.exports = function(app) {
         msg: "Welcome!",
         examples: dbExamples
       });
-    });
   });
 
   // Load example page and pass in an example by id
@@ -24,4 +23,5 @@ module.exports = function(app) {
   app.get("*", function(req, res) {
     res.render("404");
   });
+});
 };
