@@ -1,3 +1,79 @@
+.jumbotron {
+  background: rgb(1, 44, 4);
+  color: white;
+}
+
+.form-container,
+.table-container {
+  width: 80%;
+  margin: auto;
+  border: 2px solid rgb(1, 44, 4);
+  border-radius: 25px;
+  margin-bottom: 50px;
+}
+
+#new-project-form,
+#successes-table,
+#failures-table,
+#other-table {
+  padding: 20px;
+}
+
+h1,
+.lead {
+  text-align: center;
+}
+
+.display-4 {
+  margin-bottom: 50px;
+}
+
+#form-header {
+  padding: 20px;
+}
+
+.lead {
+  margin-top: 30px;
+}
+
 .list-group-item {
   line-height: 2.5;
+}
+
+.modal-body {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+#info-button,
+#site-info-button {
+  margin-left: 20px;
+}
+
+.successes,
+.failures,
+#other {
+  font-size: 20px;
+}
+
+.successes {
+  color: green;
+}
+
+.failures {
+  color: red;
+}
+
+.input-group {
+  margin-top: 32px;
+}
+
+#submit-button {
+  width: 100%;
+}
+
+#edit-project-info-button,
+#clear-form-button {
+  margin-left: 20px;
+  margin-bottom: 30px;
 }
