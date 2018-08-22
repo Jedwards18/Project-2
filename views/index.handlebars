@@ -138,7 +138,6 @@
             </div>
         </div>
     </div>
-
     <div class="table-container">
         <div id="successes-table" class="table">
             <h1 class="successes">Successes</h1>
@@ -213,4 +212,9 @@
         </div>
         <button id="edit-project-info-button" class="btn btn-primary" type="reset">Edit Project Info</button>
         <input id="clear-form-button" class="btn btn-primary" type="reset" value="reset">
+    </div>
+    <div>
+        {{#each data}}
+        {{ id }} {{ project_name }} {{ main_category }} {{ goal }} {{ state }}
+        {{/each}}
     </div>
