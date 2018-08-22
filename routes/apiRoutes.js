@@ -39,7 +39,8 @@ module.exports = function(app) {
         }
       }
     }).then(function(returnedData){
-      res.render('index', { data: returnedData.map(x => x.dataValues) });
+      const returnedValues = returnedData.map(x => x.dataValues);
+      res.render('index', { data: returnedValues });
     });
   });
 
