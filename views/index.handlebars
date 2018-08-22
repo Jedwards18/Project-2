@@ -1,76 +1,77 @@
-    <!--Jumbotron Header-->
-    <div class="jumbotron">
-        <h1 class="display-4">Welcome to Project Pouches!</h1>
-        <p class="lead">Thinking about starting up a Kickstarter Project? See how your project would hold up.</p>
-        <hr class="my-4">
-    </div>
+<!--Jumbotron Header-->
+<div class="jumbotron">
+    <h1 class="display-4">Welcome to Project Pouches!</h1>
+    <p class="lead">Thinking about starting up a Kickstarter Project? See how your project would hold up.</p>
+    <hr class="my-4">
+</div>
 
-    <div class="form-container">
-        <h1 id="form-header">Enter Your Project Information Below<button type="button" class="btn btn-secondary btn-sm" id="site-info-button" data-container="body" data-toggle="popover" data-placement="right"  data-content="Enter in your project information in the form below. You will then receive data showing the percentage of projects that have suceeded, failed and other with the same parameters. You can then determine if there are certain areas of your project that may need adjustments.">?<a></a></h1>
-        <hr>
-        <form id="new-project-form">
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for"category">Category</label>
-                    <select class="custom-select" id="category">
-                        <option>Category</option>
-                        <option>Art</option>
-                        <option>Comics</option>
-                        <option>Crafts</option>
-                        <option>Dance</option>
-                        <option>Design</option>
-                        <option>Fashion</option>
-                        <option>Film & Video</option>
-                        <option>Food</option>
-                        <option>Games</option>
-                        <option>Journalism</option>
-                        <option>Music</option>
-                        <option>Photography</option>
-                        <option>Publishing</option>
-                        <option>Technology</option>
-                        <option>Theater</option>
-                    </select>
-                </div>
-                <div class="form-group col-md-6">
-                    <label for="country">Country</label>
-                    <select class="custom-select" id="country">
-                        <option>Country</option>
-                        <option>United States</option>
-                        <option>Great Britain</option>
-                        <option>Canada</option>
-                    </select>
-                </div>
+<div class="form-container">
+    <h1 id="form-header">Enter Your Project Information Below<button type="button" class="btn btn-secondary btn-sm" id="site-info-button"
+            data-container="body" data-toggle="popover" data-placement="right" data-content="Enter in your project information in the form below. You will then receive data showing the percentage of projects that have suceeded, failed and other with the same parameters. You can then determine if there are certain areas of your project that may need adjustments.">?<a></a></h1>
+    <hr>
+    <form id="new-project-form">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for "category">Category</label>
+                <select class="custom-select" id="category">
+                    <option>Category</option>
+                    <option>Art</option>
+                    <option>Comics</option>
+                    <option>Crafts</option>
+                    <option>Dance</option>
+                    <option>Design</option>
+                    <option>Fashion</option>
+                    <option>Film & Video</option>
+                    <option>Food</option>
+                    <option>Games</option>
+                    <option>Journalism</option>
+                    <option>Music</option>
+                    <option>Photography</option>
+                    <option>Publishing</option>
+                    <option>Technology</option>
+                    <option>Theater</option>
+                </select>
             </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                    <label for="time">Time (in days)</label>
-                    <input type="text" class="form-control" id="time" placeholder="Time">
-                </div>
-                <div class="form-group col-md-6">
-                    <div class="input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">$</span>
-                        </div>
-                        <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">0.00</span>
-                        </div>
+            <div class="form-group col-md-6">
+                <label for="country">Country</label>
+                <select class="custom-select" id="country">
+                    <option>Country</option>
+                    <option>United States</option>
+                    <option>Great Britain</option>
+                    <option>Canada</option>
+                </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="time">Time (in days)</label>
+                <input type="text" class="form-control" id="time" placeholder="Time">
+            </div>
+            <div class="form-group col-md-6">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+                    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">0.00</span>
                     </div>
                 </div>
             </div>
-            <button type="button" id="submit-button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Submit</button>
-        </form>
-    </div>
+        </div>
+        <button type="button" id="submit-button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Submit</button>
+    </form>
+</div>
 
-      
-    <!-- Results Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
+
+<!-- Results Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLabel">Results</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
+                    <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
@@ -119,7 +120,8 @@
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p id="other">Other<button type="button" id="info-button" class="btn btn-secondary btn-sm" data-container="body" data-toggle="popover" data-placement="right" data-content="Other includes projects that were either cancelled, suspended, are still live or are undefined">?</button></p>
+                                    <p id="other">Other<button type="button" id="info-button" class="btn btn-secondary btn-sm"
+                                            data-container="body" data-toggle="popover" data-placement="right" data-content="Other includes projects that were either cancelled, suspended, are still live or are undefined">?</button></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -132,85 +134,91 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="edit-new-project-button" data-dismiss="modal">Edit New Project</button>
-                <button type="button" class="btn btn-primary" id="display-results-data" data-dismiss="modal">Display Results Data</button>
-            </div>
+                <button type="button" class="btn btn-secondary" id="edit-new-project-button" data-dismiss="modal">Edit New
+                    Project</button>
+                <button type="button" class="btn btn-primary" id="display-results-data" data-dismiss="modal">Display Results
+                    Data</button>
             </div>
         </div>
     </div>
-
-    <div class="table-container">
-        <div id="successes-table" class="table">
-            <h1 class="successes">Successes</h1>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Time (in days)</th>
-                        <th scope="col">Goal</th>
-                        <th scope="col">Pledged</th>
-                        <th scope="col">Backers</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">2</th>
-                        <td>Jacob</td>
-                        <td>Thornton</td>
-                        <td>@fat</td>
-                    </tr>
-                    <tr>
-                        <th scope="row">3</th>
-                        <td colspan="2">Larry the Bird</td>
-                        <td>@twitter</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <div id="failures-table" class="table">
-            <h1 class="failures">Failures</h1>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Time (in days)</th>
-                        <th scope="col">Goal</th>
-                        <th scope="col">Pledged</th>
-                        <th scope="col">Backers</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    Data
-                </tbody>
-            </table>
-        </div>
-        <div id="other-table" class="table">
-            <h1 class="other">Other</h1>
-            <table class="table table-hover">
-                <thead>
-                    <tr>
-                        <th scope="col">Name</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Time (in days)</th>
-                        <th scope="col">Goal</th>
-                        <th scope="col">Pledged</th>
-                        <th scope="col">State</th>
-                        <th scope="col">Backers</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    Data
-                </tbody>
-            </table>
-        </div>
-        <button id="edit-project-info-button" class="btn btn-primary" type="reset">Edit Project Info</button>
-        <input id="clear-form-button" class="btn btn-primary" type="reset" value="reset">
+</div>
+<div class="table-container">
+    <div id="successes-table" class="table">
+        <h1 class="successes">Successes</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Time (in days)</th>
+                    <th scope="col">Goal</th>
+                    <th scope="col">Pledged</th>
+                    <th scope="col">Backers</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each data}}
+                <tr>
+                    <th scope="row">{{id}}</th>
+                    <td>{{project_name}}</td>
+                    <td>{{main_category}}</td>
+                    <td>{{goal}}</td>
+                </tr>
+                {{/each}}
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Jacob</td>
+                    <td>Thornton</td>
+                    <td>@fat</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td colspan="2">Larry the Bird</td>
+                    <td>@twitter</td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+    <div id="failures-table" class="table">
+        <h1 class="failures">Failures</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Time (in days)</th>
+                    <th scope="col">Goal</th>
+                    <th scope="col">Pledged</th>
+                    <th scope="col">Backers</th>
+                </tr>
+            </thead>
+            <tbody>
+                Data
+            </tbody>
+        </table>
+    </div>
+    <div id="other-table" class="table">
+        <h1 class="other">Other</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Time (in days)</th>
+                    <th scope="col">Goal</th>
+                    <th scope="col">Pledged</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Backers</th>
+                </tr>
+            </thead>
+            <tbody>
+                Data
+            </tbody>
+        </table>
+    </div>
+    <button id="edit-project-info-button" class="btn btn-primary" type="reset">Edit Project Info</button>
+    <input id="clear-form-button" class="btn btn-primary" type="reset" value="reset">
+</div>
+<div>
+    {{#each data}} {{ id }} {{ project_name }} {{ main_category }} {{ goal }} {{ state }} {{/each}}
+</div>

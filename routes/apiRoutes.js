@@ -4,14 +4,14 @@ var db = require("../models");
 
 module.exports = function(app) {
   //not exactly sure what to do with this yet or if selecting all the data at once is necessary...
-  app.get("/api", function(req, res) {
+  app.get("/", function(req, res) {
     db.startups.findAll({}).then(function(dbResults) {
       res.render('index', { dbResults });
     });
   });
 
 //gets all data for category picked by user..
-  app.get("/api/category/:main_category", function(req, res){
+  app.get("/category/:main_category", function(req, res){
     db.startups.findAll({
       where: { main_category: req.params.main_category }
     }).then(function(categoryResults){
@@ -20,7 +20,7 @@ module.exports = function(app) {
   });
 
 //gets all data for country picked by user..
-  app.get("/api/country/:country", function(req, res){
+  app.get("/country/:country", function(req, res){
     db.startups.findAll({
       where: { country: req.params.country }
     }).then(function(countryResults){
@@ -29,19 +29,22 @@ module.exports = function(app) {
   });
 
 // gets back JSON data for both a country and a category
-  app.get("/api/:country/:main_category", function(req, res){
+  app.get("/:country/:main_category", function(req, res){
     db.startups.findAll({
       where: { 
         main_category: req.params.main_category,
-        country: req.params.country
+        country: req.params.country,
+        goal: {
+          [db.Sequelize.Op.between]: [req.query.goal1, req.query.goal2]
+        }
       }
-    }).then(function(categoryCountryData){
-      res.render('index', { categoryCountryData });
+    }).then(function(returnedData){
+      res.render('index', { data: returnedData.map(x => x.dataValues) });
     });
   });
 
   // Our create route that needs to be finished once we figure out what we're posting..
-  app.post("/api/startups", function(req, res) {
+  app.post("/startups", function(req, res) {
     db.startups.create(req.body).then(function(dbExample) {
       res.redirect("/");
     });
