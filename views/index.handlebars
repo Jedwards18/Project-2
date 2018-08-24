@@ -44,19 +44,16 @@
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label for="time">Time (in days)</label>
-                <input type="text" class="form-control" id="time" placeholder="Time">
+                <label for="project-name">Project Name</label>
+                <input type="text" class="form-control" id="project-name" placeholder="Project Name">
             </div>
-            <div class="form-group col-md-6">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">$</span>
-                    </div>
-                    <input type="text" class="form-control" aria-label="Dollar amount (with dot and two decimal places)">
-                    <div class="input-group-prepend">
-                        <span class="input-group-text">0.00</span>
-                    </div>
-                </div>
+            <div class="form-group col-md-3">
+                <label for="minimum-goal">Minimum Goal</label>
+                <input type="text" class="form-control" id="minimum-goal" placeholder="Min. Goal">
+            </div>
+            <div class="form-group col-md-3">
+                <label for="maximum-goal">Maximum Goal</label>
+                <input type="text" class="form-control" id="maximum-goal" placeholder="Maximum Goal">
             </div>
         </div>
         <button type="button" id="submit-button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Submit</button>
@@ -77,10 +74,10 @@
             <div class="modal-body">
                 <div class="container-fluid">
                     <div class="row">
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Percentage</p>
+                                    <p>{{successPercentage}}%</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -95,33 +92,15 @@
                             </div>
                         </div>
                         <div class="v1"></div>
-                        <div class="col-md-4">
+                        <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>Percentage</p>
+                                    <p>{{failurePercentage}}%</p>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <p class="failures">Failures</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p>Graph</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p>Percentage</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p id="other">Other<button type="button" id="info-button" class="btn btn-secondary btn-sm"
-                                            data-container="body" data-toggle="popover" data-placement="right" data-content="Other includes projects that were either cancelled, suspended, are still live or are undefined">?</button></p>
                                 </div>
                             </div>
                             <div class="row">
@@ -150,32 +129,23 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Category</th>
-                    <th scope="col">Time (in days)</th>
-                    <th scope="col">Goal</th>
+                    <th scope="col">Country</th>
                     <th scope="col">Pledged</th>
+                    <th scope="col">Goal</th>
                     <th scope="col">Backers</th>
                 </tr>
             </thead>
             <tbody>
-                {{#each data}}
+                {{#each successfulResults}}
                 <tr>
-                    <th scope="row">{{id}}</th>
                     <td>{{project_name}}</td>
                     <td>{{main_category}}</td>
+                    <td>{{country}}</td>
+                    <td>{{pledged}}</td>
                     <td>{{goal}}</td>
+                    <td>{{backers}}</td>
                 </tr>
                 {{/each}}
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                </tr>
-                <tr>
-                    <th scope="row">3</th>
-                    <td colspan="2">Larry the Bird</td>
-                    <td>@twitter</td>
-                </tr>
             </tbody>
         </table>
     </div>
@@ -186,39 +156,26 @@
                 <tr>
                     <th scope="col">Name</th>
                     <th scope="col">Category</th>
-                    <th scope="col">Time (in days)</th>
-                    <th scope="col">Goal</th>
+                    <th scope="col">Country</th>
                     <th scope="col">Pledged</th>
+                    <th scope="col">Goal</th>
                     <th scope="col">Backers</th>
                 </tr>
             </thead>
             <tbody>
-                Data
-            </tbody>
-        </table>
-    </div>
-    <div id="other-table" class="table">
-        <h1 class="other">Other</h1>
-        <table class="table table-hover">
-            <thead>
+                {{#each failureResults}}
                 <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Time (in days)</th>
-                    <th scope="col">Goal</th>
-                    <th scope="col">Pledged</th>
-                    <th scope="col">State</th>
-                    <th scope="col">Backers</th>
+                    <td>{{project_name}}</td>
+                    <td>{{main_category}}</td>
+                    <td>{{country}}</td>
+                    <td>{{pledged}}</td>
+                    <td>{{goal}}</td>
+                    <td>{{backers}}</td>
                 </tr>
-            </thead>
-            <tbody>
-                Data
+                {{/each}}
             </tbody>
         </table>
     </div>
     <button id="edit-project-info-button" class="btn btn-primary" type="reset">Edit Project Info</button>
     <input id="clear-form-button" class="btn btn-primary" type="reset" value="reset">
-</div>
-<div>
-    {{#each data}} {{ id }} {{ project_name }} {{ main_category }} {{ goal }} {{ state }} {{/each}}
 </div>
