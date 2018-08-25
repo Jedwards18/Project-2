@@ -116,9 +116,8 @@ const hideTableContainer = function() {
 $(document).ready(function(){
   hideTableContainer();
 
-  $(function () {
-    $('[data-toggle="popover"]').popover()
-  });
+  $("#resultsContainer").hide();
+  
 
   $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
@@ -140,3 +139,86 @@ $(document).ready(function(){
     $("#new-project-form")[0].reset();
   });
 });
+
+//inits materialize features
+$(document).ready(function(){
+  $('.tabs').tabs();  
+});
+
+$(document).ready(function(){
+  $('.parallax').parallax();
+});
+
+$(document).ready(function(){
+  $('.tooltipped').tooltip();
+});
+
+$(document).ready(function(){
+  $('select').formSelect();
+});
+
+
+const select = $("select");  //Variable that helps clear selects
+$(document).ready(function(){
+    $("#submit-button").on("click", function(event) {
+      event.preventDefault();
+
+      //Hide form on button click and show results
+      $("#formContainer").hide(200);
+      $("#resultsContainer").show(1000);
+      //Make inputed data into object
+      // const newUser = {
+      //   name: $("#project-name").val().trim(),
+      //   category: $("#category").val(),
+      //   country: $("#country").val(),
+      //   min_goal: $("#min-goal").val().trim(),
+      //   max_goal: $("#max-goal").val().trim()
+      // };
+      // console.log(newUser);
+      var country = $("#country").val();
+      var category = $("#category").val();
+      var min_goal = $("#min-goal").val();
+      var max_goal = $("#max-goal").val();
+      $.ajax({
+        url: "/api/"+country+"/"+category+"?goal1="+min_goal+"&goal2="+max_goal,
+        method: "get"}).then(function(response) {
+        console.log(response);
+      });
+
+      // CLEAR FORM
+      $("form input").val("");
+      select.prop('selectedIndex', 0); //Sets the first option as selected
+      select.formSelect();        //Update material select
+      
+
+ 
+
+  });
+});
+
+//Reset Materialize selects after being cleared
+select.formSelect();
+
+//Draw pie chart with success/ failure in results
+
+    
+      // google.charts.load('current', {'packages':['corechart']});
+      // google.charts.setOnLoadCallback(drawChart);
+
+      // function drawChart() {
+
+      //   var data = google.visualization.arrayToDataTable([
+      //     ['Task', 'Hours per Day'],
+      //     ['Success', response.successPercentage],  
+      //     ['Failure',  response.failurePercentage],
+      //   ]);
+
+      //   var options = {
+      //     title: 'Success/ Failure'
+      //   };
+
+      //   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+      //   chart.draw(data, options);
+      // }
+   
