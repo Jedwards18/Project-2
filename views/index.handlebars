@@ -1,63 +1,77 @@
-<!--Jumbotron Header-->
-<div class="jumbotron">
-    <h1 class="display-4">Welcome to Project Pouches!</h1>
-    <p class="lead">Thinking about starting up a Kickstarter Project? See how your project would hold up.</p>
-    <hr class="my-4">
+
+ <nav class="nav-extended">
+    <div class="nav-wrapper">
+      <div class="col s10 offset-s2">
+        <a href="#" class="brand-logo">Pouches</a>
+        <img src="https://i.imgur.com/htgxCj4.gif" alt="kangaroo logo" class="right"    >
+      </div>
+    </div>
+    <div class="nav-content">
+        <p>Research your next Kickstarter idea.</p>
+    </div>
+  </nav>
+<div class="parallax-container">
+      <div class="parallax"><img src="https://cdn2.hubspot.net/hubfs/145335/blog-image-uploads/free-case-study-template.jpg"></div>
 </div>
 
-<div class="form-container">
-    <h1 id="form-header">Enter Your Project Information Below<button type="button" class="btn btn-secondary btn-sm" id="site-info-button"
-            data-container="body" data-toggle="popover" data-placement="right" data-content="Enter in your project information in the form below. You will then receive data showing the percentage of projects that have suceeded, failed and other with the same parameters. You can then determine if there are certain areas of your project that may need adjustments.">?<a></a></h1>
-    <hr>
+<div class="container" id="formContainer">
+    <div class="formHFlex">
+        <h3 id="form-header">Enter Your Project Information Below</h3>
+        <a class="btn tooltipped" data-position="bottom" data-tooltip="Select the project type that most interests you and learn how similar strategies have faired.">?</a>
+    </div>
+    <div class="card">
     <form id="new-project-form">
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for "category">Category</label>
-                <select class="custom-select" id="category">
-                    <option>Category</option>
-                    <option>Art</option>
-                    <option>Comics</option>
-                    <option>Crafts</option>
-                    <option>Dance</option>
-                    <option>Design</option>
-                    <option>Fashion</option>
-                    <option>Film & Video</option>
-                    <option>Food</option>
-                    <option>Games</option>
-                    <option>Journalism</option>
-                    <option>Music</option>
-                    <option>Photography</option>
-                    <option>Publishing</option>
-                    <option>Technology</option>
-                    <option>Theater</option>
+        <div class="input-field col s6">
+              <input id="project-name" type="text" class="validate">
+              <label for="project-name">Your Project Name</label>
+          </div>
+        <div class="row">
+            <div class="input-field col s6">
+                <select id="category">
+                    <option value="" disabled selected>Choose a category</option>
+                    <option value="art">Art</option>
+                    <option value="comics">Comics</option>
+                    <option value="crafts">Crafts</option>
+                    <option value="dance">Dance</option>
+                    <option value="design">Design</option>
+                    <option value="fashion">Fashion</option>
+                    <option value="film">Film & Video</option>
+                    <option value="food">Food</option>
+                    <option value="games">Games</option>
+                    <option value="journalism">Journalism</option>
+                    <option value="music">Music</option>
+                    <option value="photography">Photography</option>
+                    <option value="publishing">Publishing</option>
+                    <option value="technology">Technology</option>
+                    <option value="theater">Theater</option>
                 </select>
+                <label>Category</label>
             </div>
-            <div class="form-group col-md-6">
-                <label for="country">Country</label>
-                <select class="custom-select" id="country">
-                    <option>Country</option>
-                    <option>United States</option>
-                    <option>Great Britain</option>
-                    <option>Canada</option>
+            <div class="input-field col s6">
+                <select id="country">
+                    <option value="" disabled selected>Choose a country</option>
+                    <option value="US">United States</option>
+                    <option value="GB">Great Britain</option>
+                    <option value="CA">Canada</option>
                 </select>
+                <label>Country</label>
             </div>
         </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="project-name">Project Name</label>
-                <input type="text" class="form-control" id="project-name" placeholder="Project Name">
+        <div class="row">
+            <div class="input-field col s3 offset-s3">
+                <input id="min-goal" type="text" class="validate">
+                <label for="min-goal">Minimum Goal</label>
             </div>
-            <div class="form-group col-md-3">
-                <label for="minimum-goal">Minimum Goal</label>
-                <input type="text" class="form-control" id="minimum-goal" placeholder="Min. Goal">
-            </div>
-            <div class="form-group col-md-3">
-                <label for="maximum-goal">Maximum Goal</label>
-                <input type="text" class="form-control" id="maximum-goal" placeholder="Maximum Goal">
+            <div class="input-field col s3">
+                <input id="max-goal" type="text" class="validate">
+                <label for="max-goal">Maximum Goal</label> 
             </div>
         </div>
-        <button type="button" id="submit-button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Submit</button>
+        <div class="row">
+            <a id="submit-button" class="waves-effect waves-light btn-large col s2 offset-s4" data-toggle="modal" data-targets="#exampleModal">Submit</a>
+        </div>
     </form>
+    </div>
 </div>
 
 
@@ -178,4 +192,29 @@
     </div>
     <button id="edit-project-info-button" class="btn btn-primary" type="reset">Edit Project Info</button>
     <input id="clear-form-button" class="btn btn-primary" type="reset" value="reset">
+</div>
+
+<div class="row tabBox">
+    <div class="col s12">
+    <h3 class="center-align">General Trends</h3>
+      <ul class="tabs">
+        <li class="tab col s3"><a class="active" href="#chart1">Distribution of Categories Tree Map</a></li>
+        <li class="tab col s3"><a href="#chart2">Category Columns</a></li>
+        <li class="tab col s3"><a href="#chart3">Donut</a></li>
+        <li class="tab col s3"><a href="#chart4">Chart</a></li>
+      </ul>
+    </div>
+    <div id="chart1" class="col s12">
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHISSyj5NhEIQ6o_xOMhty4tZfE0aSkhOn2QlvZsRAd1iHrzYtxMHGj0jpNSouZPHPiONH6c5MqILq/pubchart?oid=1809559103&amp;format=interactive"></iframe>
+    </div>
+    <div id="chart2" class="col s12">
+            <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHISSyj5NhEIQ6o_xOMhty4tZfE0aSkhOn2QlvZsRAd1iHrzYtxMHGj0jpNSouZPHPiONH6c5MqILq/pubchart?oid=390740315&amp;format=interactive"></iframe>        
+    </div>
+    <div id="chart3" class="col s12">
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHISSyj5NhEIQ6o_xOMhty4tZfE0aSkhOn2QlvZsRAd1iHrzYtxMHGj0jpNSouZPHPiONH6c5MqILq/pubchart?oid=448172523&amp;format=interactive"></iframe>
+    </div>
+
+    <div id="chart4" class="col s12">
+        <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQe0sF48rH5SvAx6rNf7g4qhzOwinKXTLS1wx7gnqPyMt52hzyF9x8tso6o5Xmfpzxbq2wYlBHloQIl/pubchart?oid=243655704&amp;format=interactive"></iframe>
+    </div>
 </div>

@@ -116,9 +116,7 @@ const hideTableContainer = function() {
 $(document).ready(function(){
   hideTableContainer();
 
-  $(function () {
-    $('[data-toggle="popover"]').popover()
-  });
+  
 
   $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
@@ -140,3 +138,57 @@ $(document).ready(function(){
     $("#new-project-form")[0].reset();
   });
 });
+
+//inits materialize features
+$(document).ready(function(){
+  $('.tabs').tabs();  
+});
+
+$(document).ready(function(){
+  $('.parallax').parallax();
+});
+
+$(document).ready(function(){
+  $('.tooltipped').tooltip();
+});
+
+$(document).ready(function(){
+  $('select').formSelect();
+});
+
+
+const select = $("select");  //Variable that helps clear selects
+$(document).ready(function(){
+    $("#submit-button").on("click", function(event) {
+      event.preventDefault();
+
+      //Hide form on button click and show results
+      $("#formContainer").hide(200);
+      $("#resultsContainer").show(1000);
+      //Make inputed data into object
+      const newUser = {
+        name: $("#project-name").val().trim(),
+        category: $("#category").val(),
+        country: $("#country").val(),
+        min_goal: $("#min-goal").val().trim(),
+        max_goal: $("#max-goal").val().trim()
+      };
+      console.log(newUser);
+      
+      // CLEAR FORM
+      $("form input").val("");
+      select.prop('selectedIndex', 0); //Sets the first option as selected
+      select.formSelect();        //Update material select
+      
+
+  //POST IT
+  $.post("/api/", newUser,
+    function(data) {
+      
+    });
+
+  });
+});
+
+//Reset Materialize selects after being cleared
+select.formSelect();
