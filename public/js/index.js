@@ -107,10 +107,33 @@ const hideTableContainer = function() {
 }; const showTableContainer = function() {
   $(".table-container").show();
 }; const hideFormContainer = function() {
-  $(".form-container").hide();
+  $("#formContainer").hide();
 }; const showFormContainer = function() {
-  $(".form-container").show();
-};
+  $("#formContainer").show();
+}; const hideResultsContainer = function() {
+  $("#resultsContainer").hide();
+}; const showResultsContainer = function() {
+  $("#resultsContainer")
+}
+
+function insertNewSearch(event) {
+  //event.preventDefault();
+  var search = {
+    project_name: $("#project-name").val().trim(),
+    category: $("#category").val().trim(),
+    country: $("#country").val().trim(),
+    min_goal: $("#min-goal").val().trim(),
+    max_goal: $("#max-goal").val().trim()
+  };
+
+  $.ajax({
+    url: "/api/new",
+    dataType: "json",
+    type: "post",
+    data: search,
+  });
+  console.log(search);
+}
 
 //Front-end JavaScript//
 $(document).ready(function(){
@@ -128,9 +151,10 @@ $(document).ready(function(){
     showTableContainer();
   });
 
-  $("#edit-project-info-button").on("click", function() {
+  $("#edit-new-project-button").on("click", function() {
     showFormContainer();
     hideTableContainer();
+    hideResultsContainer();
   });
 
   $("#clear-form-button").on("click", function() {
@@ -175,24 +199,62 @@ $(document).ready(function(){
       //   max_goal: $("#max-goal").val().trim()
       // };
       // console.log(newUser);
-      var country = $("#country").val();
+      var projectName = $("#project-name").val();
       var category = $("#category").val();
-      var min_goal = $("#min-goal").val();
-      var max_goal = $("#max-goal").val();
+      var country = $("#country").val();
+      var minGoal = $("#min-goal").val();
+      var maxGoal = $("#max-goal").val();
+
       $.ajax({
-        url: "/api/"+country+"/"+category+"?goal1="+min_goal+"&goal2="+max_goal,
+        url: "/api/"+country+"/"+category+"/?goal1="+minGoal+"&goal2="+maxGoal,
         method: "get"}).then(function(response) {
         console.log(response);
+        $("#successPercentage").text(response.successPercentage);
+        $("#failurePercentage").text(response.failurePercentage);
+        const loopSuccessResults = function() {
+          for (var i = 0; i < 5; i++) {
+            $("#successBody").append("<tr></tr>");
+            $("#successBody").append("<td>" + response.successfulResults[i].project_name + "</td>");
+            $("#successBody").append("<td>" + response.successfulResults[i].main_category + "</td>");
+            $("#successBody").append("<td>" + response.successfulResults[i].country + "</td>");
+            $("#successBody").append("<td>" + response.successfulResults[i].pledged + "</td>");
+            $("#successBody").append("<td>" + response.successfulResults[i].goal + "</td>");
+            $("#successBody").append("<td>" + response.successfulResults[i].backers + "</td>");
+          }
+        };
+        
+        const loopFailureResults = function() {
+          for (var i = 0; i < 5; i++) {
+            $("#failureBody").append("<tr></tr>");
+            $("#failureBody").append("<td>" + response.failureResults[i].project_name + "</td>");
+            $("#failureBody").append("<td>" + response.failureResults[i].main_category + "</td>");
+            $("#failureBody").append("<td>" + response.failureResults[i].country + "</td>");
+            $("#failureBody").append("<td>" + response.failureResults[i].pledged + "</td>");
+            $("#failureBody").append("<td>" + response.failureResults[i].goal + "</td>");
+            $("#failureBody").append("<td>" + response.failureResults[i].backers + "</td>");
+          }
+        };
+        loopSuccessResults();
+        loopFailureResults();
       });
-
-      // CLEAR FORM
-      $("form input").val("");
-      select.prop('selectedIndex', 0); //Sets the first option as selected
-      select.formSelect();        //Update material select
+      insertNewSearch();
       
+    // $("#recent-searches-button").on("click", function() {
+    //   event.preventDefault();
+    //   $("#formContainer").hide(200);
+      
+    //   var projectName = $("#project-name").val();
+    //   var category = $("#category").val();
+    //   var country = $("#country").val();
+    //   var minGoal = $("#min-goal").val();
+    //   var maxGoal = $("#max-goal").val();
 
- 
-
+    //   $.ajax({
+    //     url: "/api/"+projectName+"/"+country+"/"+category,
+    //     method: "get"}).then(function(response) {
+    //       console.log(response);
+    //   })
+    // })
   });
 });
 

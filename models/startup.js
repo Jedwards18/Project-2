@@ -11,7 +11,7 @@ module.exports = function(sequelize, DataTypes) {
     country: DataTypes.STRING,
   }, {
     timestamps: false
-});
+  });
   console.log(Startup);
   return Startup;
 };

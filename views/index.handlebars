@@ -69,6 +69,7 @@
         </div>
         <div class="row">
             <a id="submit-button" class="waves-effect waves-light btn-large col s2 offset-s4" data-toggle="modal" data-targets="#exampleModal">Submit</a>
+            <button id="recent-searches-button" class="btn btn-primary">Recent Searches</button>
         </div>
     </form>
     </div>
@@ -91,7 +92,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>{{successPercentage}}%</p>
+                                    <p id="successPercentage">{{successPercentage}}%</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -109,7 +110,7 @@
                         <div class="col-md-6">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <p>{{failurePercentage}}%</p>
+                                    <p id="failurePercentage">{{failurePercentage}}%</p>
                                 </div>
                             </div>
                             <div class="row">
@@ -149,17 +150,7 @@
                     <th scope="col">Backers</th>
                 </tr>
             </thead>
-            <tbody>
-                {{#each successfulResults}}
-                <tr>
-                    <td>{{project_name}}</td>
-                    <td>{{main_category}}</td>
-                    <td>{{country}}</td>
-                    <td>{{pledged}}</td>
-                    <td>{{goal}}</td>
-                    <td>{{backers}}</td>
-                </tr>
-                {{/each}}
+            <tbody id="successBody">
             </tbody>
         </table>
     </div>
@@ -176,21 +167,34 @@
                     <th scope="col">Backers</th>
                 </tr>
             </thead>
-            <tbody>
-                {{#each failureResults}}
-                <tr>
-                    <td>{{project_name}}</td>
-                    <td>{{main_category}}</td>
-                    <td>{{country}}</td>
-                    <td>{{pledged}}</td>
-                    <td>{{goal}}</td>
-                    <td>{{backers}}</td>
-                </tr>
-                {{/each}}
+            <tbody id="failureBody">
             </tbody>
         </table>
     </div>
-    <button id="edit-project-info-button" class="btn btn-primary" type="reset">Edit Project Info</button>
+    <button id="edit-new-project-button" class="btn btn-primary" type="reset">Edit Project Info</button>
+    <input id="clear-form-button" class="btn btn-primary" type="reset" value="reset">
+  </div>
+</div>
+
+<div class="table-container">
+    <div id="searches-table" class="table">
+        <h1 class="searches">Successes</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Pledged</th>
+                    <th scope="col">Goal</th>
+                    <th scope="col">Backers</th>
+                </tr>
+            </thead>
+            <tbody id="searchesBody">
+            </tbody>
+        </table>
+    </div>
+    <button id="edit-new-project-button" class="btn btn-primary" type="reset">Edit Project Info</button>
     <input id="clear-form-button" class="btn btn-primary" type="reset" value="reset">
   </div>
 </div>
