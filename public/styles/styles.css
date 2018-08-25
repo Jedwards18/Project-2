@@ -1,17 +1,64 @@
-.jumbotron {
-  background: rgb(1, 44, 4);
-  color: white;
+/* declare color variables */
+:root {
+  --primary: #CAEBF2;
+  --secondary: #FF3B3F;
+  --background: #EFEFEF;
+  --text: #A9A9A9;
+}
+* {
+  color: var(--text);
 }
 
-.form-container,
-.table-container {
-  width: 80%;
-  margin: auto;
-  border: 2px solid rgb(1, 44, 4);
-  border-radius: 25px;
+.formHFlex a  {
+  background-color: var(--secondary);
+}
+
+nav {
+  background-color: var(--primary);
+}
+
+body {
+  background-color: var(--background);
+}
+
+.nav-wrapper, .nav-content {
+  margin-left: 50px;
+}
+
+nav .brand-logo {
+  font-size: 3.5em;
+}
+nav img {
+  width: 80px;
+  height: 80px;
+  margin-right: 50px;
+  position: relative;
+}
+
+nav p {
+  margin: 0px 20px;
+}
+
+.formHFlex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+div .card {
   margin-bottom: 50px;
 }
 
+iframe {
+  width: 605px;
+  height: 380px;
+  margin: auto;
+  display: block;
+}
+
+.tabBox {
+  
+}
 #new-project-form,
 #successes-table,
 #failures-table,
@@ -69,11 +116,16 @@ h1,
 }
 
 #submit-button {
-  width: 100%;
+  width: 30%;
+  background-color: var(--secondary);
 }
 
 #edit-project-info-button,
 #clear-form-button {
   margin-left: 20px;
   margin-bottom: 30px;
+}
+
+.parallax-container {
+  height: 200px;
 }

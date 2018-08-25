@@ -82,5 +82,44 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/:country/:main_category", function(req, res) {
+    db.startups.findAll({
+      where: { 
+        main_category: req.params.main_category,
+        country: req.params.country,
+        goal: {
+          [db.Sequelize.Op.between]: [req.query.goal1, req.query.goal2]
+        },
+      }
+    }).then(function(returnedData){
+      const returnedValues = returnedData.map(x => x.dataValues);
+      var resultsNumber = returnedValues.length;
+
+      var successfulResults = returnedValues.filter(function(obj) {
+        if(obj.state === 'successful') {
+          return true
+        } 
+      });
+      var successfulTotal = successfulResults.length;
+      var successPercentage = Math.round(successfulTotal/resultsNumber * 100);
+
+      var failureResults = returnedValues.filter(function(obj) {
+        if(obj.state === 'failed') {
+          return true
+        }
+      });
+      var failureTotal = failureResults.length;
+      var failurePercentage = Math.round(failureTotal/resultsNumber * 100);
+      console.log("Failure Percentage: " + failurePercentage);
+      console.log("Success Percentage: " + successPercentage);
+      res.json({ 
+        successfulResults: successfulResults,
+        successPercentage: successPercentage,
+        failureResults: failureResults,
+        failurePercentage: failurePercentage 
+      });
+    });
+      
+  });
   };
 
