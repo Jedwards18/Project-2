@@ -116,6 +116,7 @@ const hideTableContainer = function() {
 $(document).ready(function(){
   hideTableContainer();
 
+  $("#resultsContainer").hide();
   
 
   $('#myModal').on('shown.bs.modal', function () {
@@ -166,26 +167,31 @@ $(document).ready(function(){
       $("#formContainer").hide(200);
       $("#resultsContainer").show(1000);
       //Make inputed data into object
-      const newUser = {
-        name: $("#project-name").val().trim(),
-        category: $("#category").val(),
-        country: $("#country").val(),
-        min_goal: $("#min-goal").val().trim(),
-        max_goal: $("#max-goal").val().trim()
-      };
-      console.log(newUser);
-      
+      // const newUser = {
+      //   name: $("#project-name").val().trim(),
+      //   category: $("#category").val(),
+      //   country: $("#country").val(),
+      //   min_goal: $("#min-goal").val().trim(),
+      //   max_goal: $("#max-goal").val().trim()
+      // };
+      // console.log(newUser);
+      var country = $("#country").val();
+      var category = $("#category").val();
+      var min_goal = $("#min-goal").val();
+      var max_goal = $("#max-goal").val();
+      $.ajax({
+        url: "/api/"+country+"/"+category+"?goal1="+min_goal+"&goal2="+max_goal,
+        method: "get"}).then(function(response) {
+        console.log(response);
+      });
+
       // CLEAR FORM
       $("form input").val("");
       select.prop('selectedIndex', 0); //Sets the first option as selected
       select.formSelect();        //Update material select
       
 
-  //POST IT
-  $.post("/api/", newUser,
-    function(data) {
-      
-    });
+ 
 
   });
 });
@@ -196,23 +202,23 @@ select.formSelect();
 //Draw pie chart with success/ failure in results
 
     
-      google.charts.load('current', {'packages':['corechart']});
-      google.charts.setOnLoadCallback(drawChart);
+      // google.charts.load('current', {'packages':['corechart']});
+      // google.charts.setOnLoadCallback(drawChart);
 
-      function drawChart() {
+      // function drawChart() {
 
-        var data = google.visualization.arrayToDataTable([
-          ['Task', 'Hours per Day'],
-          ['Success',    /*insert successPercentage here*/ ],  
-          ['Failure',     /*insert failurePercentage here*/  ],
-        ]);
+      //   var data = google.visualization.arrayToDataTable([
+      //     ['Task', 'Hours per Day'],
+      //     ['Success', response.successPercentage],  
+      //     ['Failure',  response.failurePercentage],
+      //   ]);
 
-        var options = {
-          title: 'Success/ Failure'
-        };
+      //   var options = {
+      //     title: 'Success/ Failure'
+      //   };
 
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+      //   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
 
-        chart.draw(data, options);
-      }
+      //   chart.draw(data, options);
+      // }
    
