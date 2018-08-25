@@ -192,3 +192,27 @@ $(document).ready(function(){
 
 //Reset Materialize selects after being cleared
 select.formSelect();
+
+//Draw pie chart with success/ failure in results
+
+    
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+          ['Task', 'Hours per Day'],
+          ['Success',    /*insert successPercentage here*/ ],  
+          ['Failure',     /*insert failurePercentage here*/  ],
+        ]);
+
+        var options = {
+          title: 'Success/ Failure'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+   
