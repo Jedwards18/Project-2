@@ -1,9 +1,9 @@
 
  <nav class="nav-extended">
     <div class="nav-wrapper">
-      <div class="col s10 offset-s2">
+      
         <a href="#" class="brand-logo">Pouches</a>
-        <img src="https://i.imgur.com/htgxCj4.gif" alt="kangaroo logo" class="right"    >
+        <img src="https://i.imgur.com/htgxCj4.gif" alt="kangaroo logo" class="right">
       </div>
     </div>
     <div class="nav-content">
@@ -17,7 +17,7 @@
 <div class="container" id="formContainer">
     <div class="formHFlex">
         <h3 id="form-header">Enter Your Project Information Below</h3>
-        <a class="btn tooltipped" data-position="bottom" data-tooltip="Select the project type that most interests you and learn how similar strategies have faired.">?</a>
+        <a class="btn tooltipped" data-position="bottom" data-tooltip="Select the project type that most interests you and learn how similar strategies have fared.">?</a>
     </div>
     <div class="card">
     <form id="new-project-form">
@@ -76,128 +76,129 @@
 
 
 <!-- Results Modal -->
-<div id="resultsContainer">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Results</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p>{{successPercentage}}%</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p class="successes">Success</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p>Graph</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="v1"></div>
-                        <div class="col-md-6">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p>{{failurePercentage}}%</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <p class="failures">Failures</p>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div id="piechart" style="width: 900px; height: 500px;"></div>  <!--PIECHART-->
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+<div id="resultsContainer" class="container">  
+    <div class="card">
+       <div class="row">
+          <div class="col s2 offset-s2">
+            <h4>Results</h4>
+          </div> 
+        </div> 
+        <div class="row">
+          <div class="col s2 offset-s3">
+            <div id="piechart" style="width: 700px; height: 390px;"></div> 
+          </div> 
+        </div> 
+        <ul class="collapsible popout">
+            <li class="active">
+                <div class="collapsible-header">
+                    <i class="material-icons">check</i> Successes
+                 </div>
+                <div class="collapsible-body">
+                    <table class="highlight">
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Category</th>
+                              <th>Country</th>
+                              <th>Pledged</th>
+                              <th>Goal</th>
+                              <th>Backers</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                          </tr>
+                      </tbody>
+                    </table>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" id="edit-new-project-button" data-dismiss="modal">Edit New
-                    Project</button>
-                <button type="button" class="btn btn-primary" id="display-results-data" data-dismiss="modal">Display Results
-                    Data</button>
-            </div>
-        </div>
+            </li>
+            <li>
+                <div class="collapsible-header">
+                    <i class="material-icons">close</i>Failures
+                 </div>
+                <div class="collapsible-body">
+                    <table class="highlight">
+                      <thead>
+                          <tr>
+                              <th>Name</th>
+                              <th>Category</th>
+                              <th>Country</th>
+                              <th>Pledged</th>
+                              <th>Goal</th>
+                              <th>Backers</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                          </tr>
+                          <tr>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                          </tr>
+                      </tbody>
+                    </table>
+                </div>
+            </li>
+        </ul>
     </div>
-
-<div class="table-container">
-    <div id="successes-table" class="table">
-        <h1 class="successes">Successes</h1>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">Pledged</th>
-                    <th scope="col">Goal</th>
-                    <th scope="col">Backers</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each successfulResults}}
-                <tr>
-                    <td>{{project_name}}</td>
-                    <td>{{main_category}}</td>
-                    <td>{{country}}</td>
-                    <td>{{pledged}}</td>
-                    <td>{{goal}}</td>
-                    <td>{{backers}}</td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </div>
-    <div id="failures-table" class="table">
-        <h1 class="failures">Failures</h1>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th scope="col">Name</th>
-                    <th scope="col">Category</th>
-                    <th scope="col">Country</th>
-                    <th scope="col">Pledged</th>
-                    <th scope="col">Goal</th>
-                    <th scope="col">Backers</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each failureResults}}
-                <tr>
-                    <td>{{project_name}}</td>
-                    <td>{{main_category}}</td>
-                    <td>{{country}}</td>
-                    <td>{{pledged}}</td>
-                    <td>{{goal}}</td>
-                    <td>{{backers}}</td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </div>
+   
     <button id="edit-project-info-button" class="btn btn-primary" type="reset">Edit Project Info</button>
     <input id="clear-form-button" class="btn btn-primary" type="reset" value="reset">
   </div>
 </div>
  
+<div id="userSearches" class="container">
+    <div class="card">
+    <div class="row">
+          <div class="col s2 offset-s2">
+            <h4>User Searches</h4>
+          </div> 
+        </div> 
+      <table class="highlight">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Country</th>
+                <th>Minimum Goal</th>
+                <th>Maximum Goal</th>
+            </tr>
+        </thead>
+        <tbody id="searchesBody">
+            
+            
+        </tbody>
+      </table>
+    </div>
+</div>
+
 <div class="row tabBox">
     <div class="col s12">
-    <h3 class="center-align">General Trends</h3>
+    <h3 class="center-align">Trends</h3>
       <ul class="tabs">
         <li class="tab col s3"><a class="active" href="#chart1">Distribution of Categories Tree Map</a></li>
         <li class="tab col s3"><a href="#chart2">Category Columns</a></li>
