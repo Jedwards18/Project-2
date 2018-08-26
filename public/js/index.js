@@ -125,6 +125,7 @@ $(document).ready(function(){
       var minGoal = $("#min-goal").val();
       var maxGoal = $("#max-goal").val();
 
+
       $.ajax({
         url: "/api/"+country+"/"+category+"/?goal1="+minGoal+"&goal2="+maxGoal,
         method: "get"}).then(function(response) {
@@ -151,25 +152,25 @@ $(document).ready(function(){
         $("#failurePercentage").text(response.failurePercentage);
         const loopSuccessResults = function() {
           for (var i = 0; i < 5; i++) {
-            $("#successBody").append("<tr></tr>");
-            $("#successBody").append("<td>" + response.successfulResults[i].project_name + "</td>");
-            $("#successBody").append("<td>" + response.successfulResults[i].main_category + "</td>");
-            $("#successBody").append("<td>" + response.successfulResults[i].country + "</td>");
-            $("#successBody").append("<td>" + response.successfulResults[i].pledged + "</td>");
-            $("#successBody").append("<td>" + response.successfulResults[i].goal + "</td>");
-            $("#successBody").append("<td>" + response.successfulResults[i].backers + "</td>");
+            $("#successBody").append(`</tr><tr><td> ${response.successfulResults[i].project_name} </td>
+            <td> ${response.successfulResults[i].project_name} </td>
+            <td> ${response.successfulResults[i].main_category} </td>
+            <td> ${response.successfulResults[i].country} </td>
+            <td> ${response.successfulResults[i].pledged} </td>
+            <td> ${response.successfulResults[i].goal} </td>
+            <td> ${response.successfulResults[i].backers} </td>`);
           }
         };
         
         const loopFailureResults = function() {
           for (var i = 0; i < 5; i++) {
-            $("#failureBody").append("<tr></tr>");
-            $("#failureBody").append("<td>" + response.failureResults[i].project_name + "</td>");
-            $("#failureBody").append("<td>" + response.failureResults[i].main_category + "</td>");
-            $("#failureBody").append("<td>" + response.failureResults[i].country + "</td>");
-            $("#failureBody").append("<td>" + response.failureResults[i].pledged + "</td>");
-            $("#failureBody").append("<td>" + response.failureResults[i].goal + "</td>");
-            $("#failureBody").append("<td>" + response.failureResults[i].backers + "</td>");
+            $("#failureBody").append(`</tr><tr><td> ${response.failureResults[i].project_name} </td>
+            <td> ${response.failureResults[i].project_name} </td>
+            <td> ${response.failureResults[i].main_category} </td>
+            <td> ${response.failureResults[i].country} </td>
+            <td> ${response.failureResults[i].pledged} </td>
+            <td> ${response.failureResults[i].goal} </td>
+            <td> ${response.failureResults[i].backers} </td>`);
           }
         };
         loopSuccessResults();
