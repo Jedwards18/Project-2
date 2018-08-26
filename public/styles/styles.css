@@ -2,7 +2,7 @@
 :root {
   --primary: #CAEBF2;
   --secondary: #FF3B3F;
-  --background: #EFEFEF;
+  --background: white;
   --text: #A9A9A9;
 }
 * {
@@ -22,8 +22,10 @@ body {
 }
 
 .nav-wrapper, .nav-content {
-  margin-left: 50px;
+  margin-left: 75px;
 }
+
+
 
 nav .brand-logo {
   font-size: 3.5em;
@@ -36,7 +38,7 @@ nav img {
 }
 
 nav p {
-  margin: 0px 20px;
+  margin: 0px 100px;
 }
 
 .formHFlex {
@@ -56,9 +58,7 @@ iframe {
   display: block;
 }
 
-.tabBox {
-  
-}
+
 #new-project-form,
 #successes-table,
 #failures-table,
@@ -95,6 +95,9 @@ h1,
 #info-button,
 #site-info-button {
   margin-left: 20px;
+}
+.card .row {
+  margin-bottom: 0px;
 }
 
 .successes,
