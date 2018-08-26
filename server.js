@@ -6,6 +6,8 @@ var exphbs = require("express-handlebars");
 var db = require("./models");
 
 var app = express();
+var port = process.env.PORT || 8000
+let server = require('http').Server(app);
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,9 +39,9 @@ app.set( 'port', ( process.env.PORT || 5000 ));
 
 // Starting the server, syncing our models ------------------------------------/
 db.sequelize.sync(syncOptions).then(function() {
-  app.listen( app.get( 'port' ), function() {
-    console.log( 'Node server is running on port ' + app.get( 'port' ));
-  });
+  server.listen(port, function() {
+    console.log("App is running on port " + port);
+});
 });
 
 module.exports = app;
