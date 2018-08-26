@@ -1,9 +1,9 @@
 
  <nav class="nav-extended">
     <div class="nav-wrapper">
-      <div class="col s10 offset-s2">
+      
         <a href="#" class="brand-logo">Pouches</a>
-        <img src="https://i.imgur.com/htgxCj4.gif" alt="kangaroo logo" class="right"    >
+        <img src="https://i.imgur.com/htgxCj4.gif" alt="kangaroo logo" class="right">
       </div>
     </div>
     <div class="nav-content">
@@ -17,7 +17,7 @@
 <div class="container" id="formContainer">
     <div class="formHFlex">
         <h3 id="form-header">Enter Your Project Information Below</h3>
-        <a class="btn tooltipped" data-position="bottom" data-tooltip="Select the project type that most interests you and learn how similar strategies have faired.">?</a>
+        <a class="btn tooltipped" data-position="bottom" data-tooltip="Select the project type that most interests you and learn how similar strategies have fared.">?</a>
     </div>
     <div class="card">
     <form id="new-project-form">
@@ -75,8 +75,6 @@
     </div>
 </div>
 
-
-<!-- Results Modal -->
 <div id="resultsContainer">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -199,9 +197,34 @@
   </div>
 </div>
  
+<div id="userSearches" class="container">
+    <div class="card">
+    <div class="row">
+          <div class="col s2 offset-s2">
+            <h4>User Searches</h4>
+          </div> 
+        </div> 
+      <table class="highlight">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Category</th>
+                <th>Country</th>
+                <th>Minimum Goal</th>
+                <th>Maximum Goal</th>
+            </tr>
+        </thead>
+        <tbody id="searchesBody">
+            
+            
+        </tbody>
+      </table>
+    </div>
+</div>
+
 <div class="row tabBox">
     <div class="col s12">
-    <h3 class="center-align">General Trends</h3>
+    <h3 class="center-align">Trends</h3>
       <ul class="tabs">
         <li class="tab col s3"><a class="active" href="#chart1">Distribution of Categories Tree Map</a></li>
         <li class="tab col s3"><a href="#chart2">Category Columns</a></li>
