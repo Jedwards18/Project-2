@@ -36,10 +36,9 @@ function insertNewSearch(event) {
 
 //Front-end JavaScript//
 $(document).ready(function(){
+  
   // hideTableContainer();
-  //   //######################
   $("#resultsContainer").show();
-
   // $("#resultsContainer").hide();
   
 
@@ -97,21 +96,29 @@ $(document).ready(function(){
 
 const select = $("select");  //Variable that helps clear selects
 $(document).ready(function(){
+  //Populates User Searches Table on page load  
+    $.ajax({
+      url:"/api/new/",
+      method: "get"}).then(function(response) {
+        console.log(response);
+        for (var i = 0; i < 5; i++) {
+          $("#searchesBody").append("<tr></tr>");
+          $("#searchesBody").append("<td>" + response[i].project_name + "</td>");
+          $("#searchesBody").append("<td>" + response[i].category + "</td>");
+          $("#searchesBody").append("<td>" + response[i].country + "</td>");
+          $("#searchesBody").append("<td>" + response[i].min_goal + "</td>");
+          $("#searchesBody").append("<td>" + response[i].max_goal + "</td>");
+          console.log("Name: " + response[i].project_name);
+        }
+    });
+    // On Submit Button Press
     $("#submit-button").on("click", function(event) {
       event.preventDefault();
 
       //Hide form on button click and show results
       $("#formContainer").hide(200);
       $("#resultsContainer").show(1000);
-      //Make inputed data into object
-      // const newUser = {
-      //   name: $("#project-name").val().trim(),
-      //   category: $("#category").val(),
-      //   country: $("#country").val(),
-      //   min_goal: $("#min-goal").val().trim(),
-      //   max_goal: $("#max-goal").val().trim()
-      // };
-      // console.log(newUser);
+      
       var projectName = $("#project-name").val();
       var category = $("#category").val();
       var country = $("#country").val();
@@ -122,17 +129,15 @@ $(document).ready(function(){
         url: "/api/"+country+"/"+category+"/?goal1="+minGoal+"&goal2="+maxGoal,
         method: "get"}).then(function(response) {
         console.log(response);
-       
+        // ####### Success/Fail Pie Chart ########
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
-
         function drawChart() {
           var data = google.visualization.arrayToDataTable([
             ['Task', 'Hours per Day'],
             ['Success', response.successPercentage],  
             ['Failure',  response.failurePercentage],
           ]);
-
           var options = {
             title: 'Success/ Failure'
           };
@@ -173,29 +178,15 @@ $(document).ready(function(){
       });
       insertNewSearch();
       
-    // $("#recent-searches-button").on("click", function() {
-    //   event.preventDefault();
-    //   $("#formContainer").hide(200);
       
-    //   var projectName = $("#project-name").val();
-    //   var category = $("#category").val();
-    //   var country = $("#country").val();
-    //   var minGoal = $("#min-goal").val();
-    //   var maxGoal = $("#max-goal").val();
-
-    //   $.ajax({
-    //     url: "/api/"+projectName+"/"+country+"/"+category,
-    //     method: "get"}).then(function(response) {
-    //       console.log(response);
-    //   })
-    // })
+    
   });
 });
 
 //Reset Materialize selects after being cleared
 select.formSelect();
 
-//Draw pie chart with success/ failure in results
+
 
     
       

@@ -2,8 +2,8 @@
 :root {
   --primary: #CAEBF2;
   --secondary: #FF3B3F;
-  --background: white;
-  --text: #A9A9A9;
+  --background: rgba(238, 243, 239, 0.857);
+  --text: rgb(68, 67, 67);
 }
 * {
   color: var(--text);
@@ -15,6 +15,7 @@
 
 nav {
   background-color: var(--primary);
+  padding-bottom: 80px;
 }
 
 body {
@@ -25,11 +26,11 @@ body {
   margin-left: 75px;
 }
 
-
-
-nav .brand-logo {
-  font-size: 3.5em;
+#brand-logo {
+  font-size: 4.5em;
+  color: var(--secondary);
 }
+
 nav img {
   width: 80px;
   height: 80px;
@@ -47,6 +48,9 @@ nav p {
   justify-content: center;
 }
 
+.tooltip-content {
+  color:white;
+}
 div .card {
   margin-bottom: 50px;
 }

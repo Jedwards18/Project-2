@@ -134,5 +134,17 @@ module.exports = function(app) {
         res.json(dbSearches)
       });
   })
+
+  app.get("/api/new", function(req, res) {
+
+    db.searches.findAll({order: [['id', 'desc']]}).then(function(returnedResults) {
+      const returnedValues = returnedResults.map(x => x.dataValues);
+      console.log(returnedValues)
+      res.json(returnedValues);
+    });
+  });
+
+
+  
 };
 
