@@ -69,104 +69,130 @@
         </div>
         <div class="row">
             <a id="submit-button" class="waves-effect waves-light btn-large col s2 offset-s4" data-toggle="modal" data-targets="#exampleModal">Submit</a>
+            <button id="recent-searches-button" class="btn btn-primary">Recent Searches</button>
         </div>
     </form>
     </div>
 </div>
 
-
-<!-- Results Modal -->
-<div id="resultsContainer" class="container">  
-    <div class="card">
-       <div class="row">
-          <div class="col s2 offset-s2">
-            <h4>Results</h4>
-          </div> 
-        </div> 
-        <div class="row">
-          <div class="col s2 offset-s3">
-            <div id="piechart" style="width: 700px; height: 390px;"></div> 
-          </div> 
-        </div> 
-        <ul class="collapsible popout">
-            <li class="active">
-                <div class="collapsible-header">
-                    <i class="material-icons">check</i> Successes
-                 </div>
-                <div class="collapsible-body">
-                    <table class="highlight">
-                      <thead>
-                          <tr>
-                              <th>Name</th>
-                              <th>Category</th>
-                              <th>Country</th>
-                              <th>Pledged</th>
-                              <th>Goal</th>
-                              <th>Backers</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                          </tr>
-                          <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                          </tr>
-                      </tbody>
-                    </table>
+<div id="resultsContainer">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Results</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p id="successPercentage">{{successPercentage}}%</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="successes">Success</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p>Graph</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="v1"></div>
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p id="failurePercentage">{{failurePercentage}}%</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <p class="failures">Failures</p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div id="piechart" style="width: 900px; height: 500px;"></div>  <!--PIECHART-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </li>
-            <li>
-                <div class="collapsible-header">
-                    <i class="material-icons">close</i>Failures
-                 </div>
-                <div class="collapsible-body">
-                    <table class="highlight">
-                      <thead>
-                          <tr>
-                              <th>Name</th>
-                              <th>Category</th>
-                              <th>Country</th>
-                              <th>Pledged</th>
-                              <th>Goal</th>
-                              <th>Backers</th>
-                          </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                          </tr>
-                          <tr>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                          </tr>
-                      </tbody>
-                    </table>
-                </div>
-            </li>
-        </ul>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="edit-new-project-button" data-dismiss="modal">Edit New
+                    Project</button>
+                <button type="button" class="btn btn-primary" id="display-results-data" data-dismiss="modal">Display Results
+                    Data</button>
+            </div>
+        </div>
     </div>
-   
-    <button id="edit-project-info-button" class="btn btn-primary" type="reset">Edit Project Info</button>
+
+<div class="table-container">
+    <div id="successes-table" class="table">
+        <h1 class="successes">Successes</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Pledged</th>
+                    <th scope="col">Goal</th>
+                    <th scope="col">Backers</th>
+                </tr>
+            </thead>
+            <tbody id="successBody">
+            </tbody>
+        </table>
+    </div>
+    <div id="failures-table" class="table">
+        <h1 class="failures">Failures</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Pledged</th>
+                    <th scope="col">Goal</th>
+                    <th scope="col">Backers</th>
+                </tr>
+            </thead>
+            <tbody id="failureBody">
+            </tbody>
+        </table>
+    </div>
+    <button id="edit-new-project-button" class="btn btn-primary" type="reset">Edit Project Info</button>
+    <input id="clear-form-button" class="btn btn-primary" type="reset" value="reset">
+  </div>
+</div>
+
+<div class="table-container">
+    <div id="searches-table" class="table">
+        <h1 class="searches">Successes</h1>
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Pledged</th>
+                    <th scope="col">Goal</th>
+                    <th scope="col">Backers</th>
+                </tr>
+            </thead>
+            <tbody id="searchesBody">
+            </tbody>
+        </table>
+    </div>
+    <button id="edit-new-project-button" class="btn btn-primary" type="reset">Edit Project Info</button>
     <input id="clear-form-button" class="btn btn-primary" type="reset" value="reset">
   </div>
 </div>
