@@ -102,15 +102,14 @@ $(document).ready(function(){
       method: "get"}).then(function(response) {
         console.log(response);
         for (var i = 0; i < 5; i++) {
-          $("#searchesBody").append("<tr></tr>");
-          $("#searchesBody").append("<td>" + response[i].project_name + "</td>");
-          $("#searchesBody").append("<td>" + response[i].category + "</td>");
-          $("#searchesBody").append("<td>" + response[i].country + "</td>");
-          $("#searchesBody").append("<td>" + response[i].min_goal + "</td>");
-          $("#searchesBody").append("<td>" + response[i].max_goal + "</td>");
-          console.log("Name: " + response[i].project_name);
+          $("#searchesBody").append(`</tr><tr><td> ${response[i].project_name} </td>
+          <td> ${response[i].category} </td>
+          <td> ${response[i].country} </td>
+          <td> ${response[i].min_goal} </td>
+          <td> ${response[i].max_goal} </td>`);
         }
     });
+    
     // On Submit Button Press
     $("#submit-button").on("click", function(event) {
       event.preventDefault();
