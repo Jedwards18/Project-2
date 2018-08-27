@@ -1,7 +1,6 @@
 var db = require("../models");
-// THESE ARE JUST SET UP FOR NOW, WILL FIX LATER ONCE WE KNOW WHERE WE'RE ROUTING DATA, PL 8/17
+
 module.exports = function(app) {
-  //not exactly sure what to do with this yet or if selecting all the data at once is necessary...
   app.get("/", function(req, res) {
     db.startups.findAll({}).then(function(dbResults) {
       res.render('index', { dbResults });
