@@ -1,7 +1,5 @@
 var db = require("../models");
-
 // THESE ARE JUST SET UP FOR NOW, WILL FIX LATER ONCE WE KNOW WHERE WE'RE ROUTING DATA, PL 8/17
-
 module.exports = function(app) {
   //not exactly sure what to do with this yet or if selecting all the data at once is necessary...
   app.get("/", function(req, res) {
@@ -9,7 +7,6 @@ module.exports = function(app) {
       res.render('index', { dbResults });
     });
   });
-
 //gets all data for category picked by user..
   app.get("/category/:main_category", function(req, res){
     db.startups.findAll({
@@ -18,7 +15,6 @@ module.exports = function(app) {
       res.render('index', { categoryResults });
     })
   });
-
 //gets all data for country picked by user..
   app.get("/country/:country", function(req, res){
     db.startups.findAll({
@@ -27,13 +23,7 @@ module.exports = function(app) {
       res.render('index', { countryResults });
     })
   });
-
-  app.post("/startups", function(req, res) {
-    db.startups.create(req.body).then(function(dbExample) {
-      res.redirect("/");
-    });
-  });
-
+  //Gets information on search and returns Kickstarters and Success/Fail percentage
   app.get("/api/:country/:main_category", function(req, res) {
     db.startups.findAll({
       where: { 
@@ -64,6 +54,14 @@ module.exports = function(app) {
       var failurePercentage = Math.round(failureTotal/resultsNumber * 100);
       console.log("Failure Percentage: " + failurePercentage);
       console.log("Success Percentage: " + successPercentage);
+      //No results actions
+        if (isNaN(failurePercentage) || isNaN(successPercentage)) {
+          console.log("No Results");
+          res.json({
+            successPercentage: 'null',
+            failurePercentage: 'null',
+          });
+        };
       res.json({ 
         successfulResults: successfulResults,
         successPercentage: successPercentage,
@@ -73,9 +71,8 @@ module.exports = function(app) {
     });
       
   });
-
+  //Saves search results so they can be used in Recent Searches
   app.post("/api/new", function(req, res) {
-    console.log("I got here");
     db.searches.create({ 
         project_name: req.body.project_name,
         category: req.body.category,
@@ -86,17 +83,12 @@ module.exports = function(app) {
         res.json(dbSearches)
       });
   })
-
+  //Orders searches in descending order to be used on table.
   app.get("/api/new", function(req, res) {
-
     db.searches.findAll({order: [['id', 'desc']]}).then(function(returnedResults) {
       const returnedValues = returnedResults.map(x => x.dataValues);
       console.log(returnedValues)
       res.json(returnedValues);
     });
   });
-
-
-  
 };
-

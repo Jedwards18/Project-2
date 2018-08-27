@@ -14,7 +14,7 @@ const hideTableContainer = function() {
 }; const showResultsContainer = function() {
   $("#resultsContainer")
 }
-
+//Takes in a search and stores it into db
 function insertNewSearch(event) {
   //event.preventDefault();
   var search = {
@@ -24,7 +24,6 @@ function insertNewSearch(event) {
     min_goal: $("#min-goal").val().trim(),
     max_goal: $("#max-goal").val().trim()
   };
-
   $.ajax({
     url: "/api/new",
     dataType: "json",
@@ -32,38 +31,30 @@ function insertNewSearch(event) {
     data: search,
   });
   console.log(search);
-}
-
+};
 //Front-end JavaScript//
 $(document).ready(function(){
-  
   // hideTableContainer();
   $("#resultsContainer").show();
   // $("#resultsContainer").hide();
-  
-
   $('#myModal').on('shown.bs.modal', function () {
     $('#myInput').trigger('focus')
   });
-
   $("#display-results-data").on("click", function() {
     hideFormContainer();
     showTableContainer();
   });
-
   $("#edit-new-project-button").on("click", function() {
     showFormContainer();
     hideTableContainer();
     hideResultsContainer();
   });
-
   $("#clear-form-button").on("click", function() {
     hideTableContainer();
     showFormContainer();
     $("#new-project-form")[0].reset();
   });
 });
-
 //inits materialize features
 // Makes Collapsible werk werk werk werk werk
 const elem = document.querySelector('.collapsible.expandable');
@@ -90,11 +81,8 @@ $(document).ready(function(){
 $(document).ready(function(){
   $('.collapsible').collapsible();
 });
-
-
-
-
-const select = $("select");  //Variable that helps clear selects
+//Variable that helps clear selects
+const select = $("select");  
 $(document).ready(function(){
   //Populates User Searches Table on page load  
     $.ajax({
@@ -109,26 +97,44 @@ $(document).ready(function(){
           <td> ${response[i].max_goal} </td>`);
         }
     });
-    
     // On Submit Button Press
     $("#submit-button").on("click", function(event) {
+
       event.preventDefault();
 
-      //Hide form on button click and show results
-      $("#formContainer").hide(200);
-      $("#resultsContainer").show(1000);
-      
       var projectName = $("#project-name").val();
       var category = $("#category").val();
       var country = $("#country").val();
       var minGoal = $("#min-goal").val();
       var maxGoal = $("#max-goal").val();
-
+      //Won't submit post if missing information
+      if(!category || !country || !minGoal || !maxGoal){
+        console.log("No input");
+        console.log(category+country+minGoal+maxGoal);
+        return;
+      };
+      //Hide form on button click and show results
+      $("#formContainer").hide(200);
+      $("#resultsContainer").show(1000);
 
       $.ajax({
         url: "/api/"+country+"/"+category+"/?goal1="+minGoal+"&goal2="+maxGoal,
         method: "get"}).then(function(response) {
         console.log(response);
+        //If no results the form will appear again.
+        if (response.failurePercentage === 'null' || response.successPercentage === 'null') {
+          console.log("No Results");
+
+          $("#formContainer").show(1000);
+          $("#resultsContainer").hide(200);
+
+          $("form input").val("");
+          select.prop('selectedIndex', 0); 
+          select.formSelect();
+
+          var noResults = '<span class="light-green-text text-accent-3">Unfortunately your search had no results</span>';
+          M.toast({html: noResults});
+        };
         // ####### Success/Fail Pie Chart ########
         google.charts.load('current', {'packages':['corechart']});
         google.charts.setOnLoadCallback(drawChart);
@@ -177,15 +183,11 @@ $(document).ready(function(){
 
       });
       insertNewSearch();
-      
-      
     
   });
 });
-
 //Reset Materialize selects after being cleared
 select.formSelect();
-
 
 
     
