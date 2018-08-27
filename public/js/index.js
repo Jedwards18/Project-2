@@ -130,46 +130,72 @@ $(document).ready(function(){
         method: "get"}).then(function(response) {
         console.log(response);
         // ####### Success/Fail Pie Chart ########
-        google.charts.load('current', {'packages':['corechart']});
-        google.charts.setOnLoadCallback(drawChart);
-        function drawChart() {
-          var data = google.visualization.arrayToDataTable([
-            ['Task', 'Hours per Day'],
-            ['Success', response.successPercentage],  
-            ['Failure',  response.failurePercentage],
-          ]);
-          var options = {
-            title: 'Success/ Failure'
-          };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
-      }
+        
+          $(function () {
+            $('#pieChart').highcharts({
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: "Success Rate of your Selection"
+            },
+            tooltip: {
+                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+            },
+            plotOptions: {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                        }
+                    }
+                }
+            },
+            series: [{
+                name: 'Success',
+                colorByPoint: true,
+                data: [{
+                    name: 'Success',
+                    y: response.successPercentage
+                }, {
+                    name: 'Failure',
+                    y: response.failurePercentage
+                }]
+            }]
+          
+          });
+          });     
         
         $("#successPercentage").text(response.successPercentage);
         $("#failurePercentage").text(response.failurePercentage);
         const loopSuccessResults = function() {
           for (var i = 0; i < 5; i++) {
-            $("#successBody").append("<tr></tr>");
-            $("#successBody").append("<td>" + response.successfulResults[i].project_name + "</td>");
-            $("#successBody").append("<td>" + response.successfulResults[i].main_category + "</td>");
-            $("#successBody").append("<td>" + response.successfulResults[i].country + "</td>");
-            $("#successBody").append("<td>" + response.successfulResults[i].pledged + "</td>");
-            $("#successBody").append("<td>" + response.successfulResults[i].goal + "</td>");
-            $("#successBody").append("<td>" + response.successfulResults[i].backers + "</td>");
+            $("#successBody").append(`</tr><tr><td> ${response.successfulResults[i].project_name} </td>
+            <td> ${response.successfulResults[i].project_name} </td>
+            <td> ${response.successfulResults[i].main_category} </td>
+            <td> ${response.successfulResults[i].country} </td>
+            <td> ${response.successfulResults[i].pledged} </td>
+            <td> ${response.successfulResults[i].goal} </td>
+            <td> ${response.successfulResults[i].backers} </td>`);
           }
         };
         
         const loopFailureResults = function() {
           for (var i = 0; i < 5; i++) {
-            $("#failureBody").append("<tr></tr>");
-            $("#failureBody").append("<td>" + response.failureResults[i].project_name + "</td>");
-            $("#failureBody").append("<td>" + response.failureResults[i].main_category + "</td>");
-            $("#failureBody").append("<td>" + response.failureResults[i].country + "</td>");
-            $("#failureBody").append("<td>" + response.failureResults[i].pledged + "</td>");
-            $("#failureBody").append("<td>" + response.failureResults[i].goal + "</td>");
-            $("#failureBody").append("<td>" + response.failureResults[i].backers + "</td>");
+            $("#failureBody").append(`</tr><tr><td> ${response.failureResults[i].project_name} </td>
+            <td> ${response.failureResults[i].project_name} </td>
+            <td> ${response.failureResults[i].main_category} </td>
+            <td> ${response.failureResults[i].country} </td>
+            <td> ${response.failureResults[i].pledged} </td>
+            <td> ${response.failureResults[i].goal} </td>
+            <td> ${response.failureResults[i].backers} </td>`);
           }
         };
         loopSuccessResults();
@@ -183,11 +209,92 @@ $(document).ready(function(){
   });
 });
 
-//Reset Materialize selects after being cleared
-select.formSelect();
-
-
-
-    
-      
-   
+//######### CHARTS #############
+$(function () {
+  $('#chart1').highcharts({
+  colorAxis: {
+      minColor: "#f41400",
+      maxColor: "#006df4"
+  },
+  series: [{
+      type: 'treemap',
+      layoutAlgorithm: 'squarified',
+      data: [{
+          name: 'Publishing',
+          value: 10,
+          colorValue: 29
+      }, {
+          name: 'Film & Video',
+          value: 17,
+          colorValue: 36
+      }, {
+          name: 'Music',
+          value: 14,
+          colorValue: 47
+      }, {
+          name: 'Food',
+          value: 6,
+          colorValue: 27
+      }, {
+          name: 'Design',
+          value: 8,
+          colorValue: 34
+      }, {
+          name: 'Crafts',
+          value: 2,
+          colorValue: 24
+      }, {
+          name: 'Games',
+          value: 10,
+          colorValue: 36
+      }, {
+          name: 'Comics',
+          value: 3,
+          colorValue: 55
+      }, {
+          name: 'Fashion',
+          value: 6,
+          colorValue: 24
+      }, {
+          name: 'Theater',
+          value: 3,
+          colorValue: 61
+      }, {
+          name: 'Art',
+          value: 8,
+          colorValue: 41
+      }, {
+          name: 'Photography',
+          value: 3,
+          colorValue: 31
+      }, {
+          name: 'Technology',
+          value: 8,
+          colorValue: 20
+      }, {
+          name: 'Dance',
+          value: 1,
+          colorValue: 60
+      }, {
+          name: 'Journalism',
+          value: 1,
+          colorValue: 18
+      },
+    ]
+  }],
+  title: {
+      text: 'Size and Success of Each Category'
+  },
+  legend: {
+      enabled: true,
+      title: {
+        text: 'Percent Successful<br/><span style="font-size: 9px; color: #666; font-weight: normal"></span>',
+        style: {
+            fontStyle: 'italic'
+        }
+  }
+}
+  
+  
+});
+});
