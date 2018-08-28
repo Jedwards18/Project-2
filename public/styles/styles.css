@@ -5,6 +5,17 @@
   --background: rgba(238, 243, 239, 0.857);
   --text: rgb(68, 67, 67);
 }
+
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+main {
+  flex: 1 0 auto;
+}
+    
 * {
   color: var(--text);
 }
@@ -29,6 +40,9 @@ body {
 #brand-logo {
   font-size: 4.5em;
   color: var(--secondary);
+  font-family: 'Permanent Marker';
+  font-family: 'Ultra', serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 nav img {
@@ -134,5 +148,18 @@ h1,
 }
 
 .parallax-container {
-  height: 200px;
+  height: 400px;
+}
+
+#userSearchesContainer h4 {
+  white-space: nowrap;
+ 
+}
+
+#chart1, #chart2, #chart3, #chart4 {
+  padding: 30px;
+}
+
+.page-footer {
+  background-color: var(--primary);
 }
