@@ -449,7 +449,7 @@ $(function () {
           },
           tooltip: {
               headerFormat: '<b>{series.name}</b><br>',
-              pointFormat: '{point.x} Days, {point.y} Percent Funded'
+              pointFormat: '{point.x} Percent Funded, ${point.y} '
           }
       }
   },
