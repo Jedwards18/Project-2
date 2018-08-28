@@ -136,7 +136,6 @@ $(document).ready(function(){
         $("#failureBody").empty();
         const loopSuccessResults = function() {
           for (var i = 0; i < 5; i++) {
-            <td> ${response.successfulResults[i].pledged} </td>
             $("#successBody").append(`</tr><tr><td> ${response.successfulResults[i].project_name} </td>
             <td> ${response.successfulResults[i].main_category} </td>
             <td> ${response.successfulResults[i].country} </td>
