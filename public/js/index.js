@@ -158,7 +158,6 @@ $(document).ready(function(){
         const loopSuccessResults = function() {
           for (var i = 0; i < 5; i++) {
             $("#successBody").append(`</tr><tr><td> ${response.successfulResults[i].project_name} </td>
-            <td> ${response.successfulResults[i].project_name} </td>
             <td> ${response.successfulResults[i].main_category} </td>
             <td> ${response.successfulResults[i].country} </td>
             <td> ${response.successfulResults[i].pledged} </td>
@@ -170,7 +169,6 @@ $(document).ready(function(){
         const loopFailureResults = function() {
           for (var i = 0; i < 5; i++) {
             $("#failureBody").append(`</tr><tr><td> ${response.failureResults[i].project_name} </td>
-            <td> ${response.failureResults[i].project_name} </td>
             <td> ${response.failureResults[i].main_category} </td>
             <td> ${response.failureResults[i].country} </td>
             <td> ${response.failureResults[i].pledged} </td>
