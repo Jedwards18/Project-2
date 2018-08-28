@@ -1,4 +1,6 @@
 
+  $("#formContainer").hide();
+
 function insertNewSearch(event) {
   //event.preventDefault();
   var search = {
@@ -8,7 +10,6 @@ function insertNewSearch(event) {
     min_goal: $("#min-goal").val().trim(),
     max_goal: $("#max-goal").val().trim()
   };
-
   $.ajax({
     url: "/api/new",
     dataType: "json",
@@ -16,13 +17,10 @@ function insertNewSearch(event) {
     data: search,
   });
   console.log(search);
-}
-
+};
 //Front-end JavaScript//
 $(document).ready(function(){
-  
   $("#resultsContainer").hide();
-
 }); 
 
 //inits materialize features
@@ -56,31 +54,52 @@ $(document).ready(function(){
       method: "get"}).then(function(response) {
         console.log(response);
         for (var i = 0; i < 5; i++) {
-          $("#searchesBody").append("<tr></tr>");
-          $("#searchesBody").append("<td>" + response[i].project_name + "</td>");
-          $("#searchesBody").append("<td>" + response[i].category + "</td>");
-          $("#searchesBody").append("<td>" + response[i].country + "</td>");
-          $("#searchesBody").append("<td>" + response[i].min_goal + "</td>");
-          $("#searchesBody").append("<td>" + response[i].max_goal + "</td>");
-          console.log("Name: " + response[i].project_name);
+          $("#searchesBody").append(`</tr><tr><td> ${response[i].project_name} </td>
+          <td> ${response[i].category} </td>
+          <td> ${response[i].country} </td>
+          <td> ${response[i].min_goal} </td>
+          <td> ${response[i].max_goal} </td>`);
         }
     });
     // On Submit Button Press
     $("#submit-button").on("click", function(event) {
+
       event.preventDefault();
 
       $("#resultsContainer").show(1000);
-      
       var projectName = $("#project-name").val();
       var category = $("#category").val();
       var country = $("#country").val();
       var minGoal = $("#min-goal").val();
       var maxGoal = $("#max-goal").val();
+      //Won't submit post if missing information
+      if(!category || !country || !minGoal || !maxGoal){
+        console.log("No input");
+        console.log(category+country+minGoal+maxGoal);
+        return;
+      };
+      //Hide form on button click and show results
+      $("#formContainer").hide(200);
+      $("#resultsContainer").show(1000);
 
       $.ajax({
         url: "/api/"+country+"/"+category+"/?goal1="+minGoal+"&goal2="+maxGoal,
         method: "get"}).then(function(response) {
         console.log(response);
+        //If no results the form will appear again.
+        if (response.failurePercentage === 'null' || response.successPercentage === 'null') {
+          console.log("No Results");
+
+          $("#formContainer").show(1000);
+          $("#resultsContainer").hide(200);
+
+          $("form input").val("");
+          select.prop('selectedIndex', 0); 
+          select.formSelect();
+
+          var noResults = '<span class="light-green-text text-accent-3">Unfortunately your search had no results</span>';
+          M.toast({html: noResults});
+        };
         // ####### Success/Fail Pie Chart ########
           $(function () {
             $('#pieChart').highcharts({
@@ -127,8 +146,8 @@ $(document).ready(function(){
         $("#failureBody").empty();
         const loopSuccessResults = function() {
           for (var i = 0; i < 5; i++) {
+            <td> ${response.successfulResults[i].pledged} </td>
             $("#successBody").append(`</tr><tr><td> ${response.successfulResults[i].project_name} </td>
-            <td> ${response.successfulResults[i].project_name} </td>
             <td> ${response.successfulResults[i].main_category} </td>
             <td> ${response.successfulResults[i].country} </td>
             <td> ${response.successfulResults[i].pledged} </td>
@@ -140,7 +159,6 @@ $(document).ready(function(){
         const loopFailureResults = function() {
           for (var i = 0; i < 5; i++) {
             $("#failureBody").append(`</tr><tr><td> ${response.failureResults[i].project_name} </td>
-            <td> ${response.failureResults[i].project_name} </td>
             <td> ${response.failureResults[i].main_category} </td>
             <td> ${response.failureResults[i].country} </td>
             <td> ${response.failureResults[i].pledged} </td>
@@ -153,8 +171,6 @@ $(document).ready(function(){
 
       });
       insertNewSearch();
-      
-      
     
   });
 });
