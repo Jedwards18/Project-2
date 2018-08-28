@@ -7,7 +7,9 @@
     </div>
   </nav>
 <div class="parallax-container">
-      <div class="parallax"><img src="https://cdn2.hubspot.net/hubfs/145335/blog-image-uploads/free-case-study-template.jpg"></div>
+      <div class="parallax">
+          <img src="https://cdn2.hubspot.net/hubfs/145335/blog-image-uploads/free-case-study-template.jpg">
+        </div>
 </div>
 
 <div class="container" id="formContainer">
@@ -20,7 +22,7 @@
         <div class="input-field col s6">
               <input id="project-name" type="text" class="validate">
               <label for="project-name">Your Project Name</label>
-          </div>
+          </div>    
         <div class="row">
             <div class="input-field col s6">
                 <select id="category">
@@ -64,8 +66,8 @@
             </div>
         </div>
         <div class="row">
-            <a id="submit-button" class="waves-effect waves-light btn-large col s2 offset-s4" data-toggle="modal" data-targets="#exampleModal">Submit</a>
-           
+            <a id="submit-button" class="waves-effect waves-light btn-large col s2 offset-s4">Submit</a>
+            <a id="clear-form-button" class="waves-effect waves-light btn-small">Clear</a>
         </div>
     </form>
     </div>
@@ -80,7 +82,7 @@
         </div> 
         <div class="row">
           <div class="col s2 offset-s3">
-            <div id="piechart" style="width: 700px; height: 390px;"></div> 
+            <div id="pieChart" style="width:600px; height:400px;"></div> 
           </div> 
         </div> 
         <ul class="collapsible popout">
@@ -128,11 +130,51 @@
     </div>
 </div>
 
+<div class="container" id="tabContainer">
+   <div class="card">
+    <div class="row">
+     <div class="col s2 offset-s2">
+       <h4 class="center-align">Trends</h3>
+     </div>
+     </div>
+     <div class="row">
+      <div class="s12">
+        <ul class="tabs">
+          <li class="tab col s3"><a class="active" href="#chart1">Category Tree Map</a></li>
+          <li class="tab col s3"><a href="#chart2">Category Columns</a></li>
+          <li class="tab col s3"><a href="#chart3">Funding v Duration</a></li>
+          <li class="tab col s3"><a href="#chart4">Funding v Goal</a></li>
+        </ul>
+        </div>
+        </div>
 
-    
-  </div>
+      <div id="chart1" class="col s12">
+              
+      </div>
+
+      <div id="chart2" class="col s12">
+                      
+      </div>
+
+      <div id="chart3" class="col s12">
+          
+      </div>
+  
+      <div id="chart4" class="col s12">
+          
+      </div>
+
+    </div>
 </div>
- 
+
+<div class="parallax-container">
+      <div class="parallax">
+          <img src="https://cdn-images-1.medium.com/max/2000/1*kauBinmv1CygIXKfE8eVYg.png">
+        </div>
+</div>
+
+
+
 <div id="userSearchesContainer" class="container">
     <div class="card">
     <div class="row">
@@ -164,39 +206,12 @@
     </div>
 </div>
 
-<div class="container" id="tabContainer">
-   <h3 class="center-align">Trends</h3>
-    <div class="card">
-     <div class="row">
-      <div class="s12">
-        <ul class="tabs">
-          <li class="tab col s3"><a class="active" href="#chart1">Distribution of   Categories Tree Map</a></li>
-          <li class="tab col s3"><a href="#chart2">Category Columns</a></li>
-          <li class="tab col s3"><a href="#chart3">Donut</a></li>
-          <li class="tab col s3"><a href="#chart4">Chart</a></li>
-        </ul>
+<footer class="page-footer primary">
+    <div class="container">
+        <div class="row">
+            <p>
+            Made by Jacob Edwards, Jeff Anderson, Phillip Nguyen and Patrick Lehmann with lots of &#x1F355 &#x1F436 	
+            </p>
         </div>
-        </div>
-
-      <div id="chart1" class="col s12">
-              <iframe   src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHISSyj5NhEIQ6o  _xOMhty4tZfE0aSkhOn2QlvZsRAd1iHrzYtxMHGj0jpNSouZPHPiONH6c5MqILq/pubch  art?oid=1809559103&amp;format=interactive"></iframe>
-      </div>
-
-      <div id="chart2" class="col s12">
-              <iframe   src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHISSyj5NhEIQ6o  _xOMhty4tZfE0aSkhOn2QlvZsRAd1iHrzYtxMHGj0jpNSouZPHPiONH6c5MqILq/pubch  art?oid=390740315&amp;format=interactive"></iframe>        
-      </div>
-
-      <div id="chart3" class="col s12">
-          <iframe   src="https://docs.google.com/spreadsheets/d/e/2PACX-1vSHISSyj5NhEIQ6o_xOM  hty4tZfE0aSkhOn2QlvZsRAd1iHrzYtxMHGj0jpNSouZPHPiONH6c5MqILq/pubchart?  oid=448172523&amp;format=interactive"></iframe>
-      </div>
-  
-      <div id="chart4" class="col s12">
-          <iframe   src="https://docs.google.com/spreadsheets/d/e/2PACX-1vQe0sF48rH5SvAx6rNf7  g4qhzOwinKXTLS1wx7gnqPyMt52hzyF9x8tso6o5Xmfpzxbq2wYlBHloQIl/pubchart?  oid=243655704&amp;format=interactive"></iframe>
-      </div>
-
     </div>
-</div>
-
- {{!-- <button id="recent-searches-button" class="btn btn-primary">Recent Searches</button>
- <button id="edit-new-project-button" class="btn btn-primary" type="reset">Edit Project Info</button>
-    <input id="clear-form-button" class="btn btn-primary" type="reset" value="reset"> --}}
+</footer>
