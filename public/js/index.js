@@ -64,11 +64,10 @@ $(document).ready(function(){
       event.preventDefault();
 
       $("#resultsContainer").show(1000);
-      var projectName = $("#project-name").val();
-      var category = $("#category").val();
-      var country = $("#country").val();
-      var minGoal = $("#min-goal").val();
-      var maxGoal = $("#max-goal").val();
+      const category = $("#category").val();
+      const country = $("#country").val();
+      const minGoal = $("#min-goal").val();
+      const maxGoal = $("#max-goal").val();
       //Won't submit post if missing information
       if(!category || !country || !minGoal || !maxGoal){
         console.log("No input");
@@ -87,7 +86,7 @@ $(document).ready(function(){
           select.prop('selectedIndex', 0); 
           select.formSelect();
 
-          var noResults = '<span class="light-green-text text-accent-3">Unfortunately your search had no results</span>';
+          const noResults = '<span class="light-green-text text-accent-3">Unfortunately your search had no results</span>';
           M.toast({html: noResults});
         };
         // ####### Success/Fail Pie Chart ########
