@@ -1,6 +1,4 @@
 
-  $("#formContainer").hide();
-
 function insertNewSearch(event) {
   //event.preventDefault();
   var search = {
@@ -63,7 +61,6 @@ $(document).ready(function(){
     });
     // On Submit Button Press
     $("#submit-button").on("click", function(event) {
-
       event.preventDefault();
 
       $("#resultsContainer").show(1000);
@@ -78,9 +75,6 @@ $(document).ready(function(){
         console.log(category+country+minGoal+maxGoal);
         return;
       };
-      //Hide form on button click and show results
-      $("#formContainer").hide(200);
-      $("#resultsContainer").show(1000);
 
       $.ajax({
         url: "/api/"+country+"/"+category+"/?goal1="+minGoal+"&goal2="+maxGoal,
@@ -89,10 +83,6 @@ $(document).ready(function(){
         //If no results the form will appear again.
         if (response.failurePercentage === 'null' || response.successPercentage === 'null') {
           console.log("No Results");
-
-          $("#formContainer").show(1000);
-          $("#resultsContainer").hide(200);
-
           $("form input").val("");
           select.prop('selectedIndex', 0); 
           select.formSelect();
