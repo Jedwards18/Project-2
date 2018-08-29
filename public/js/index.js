@@ -63,7 +63,6 @@ $(document).ready(function(){
     $("#submit-button").on("click", function(event) {
       event.preventDefault();
 
-      $("#resultsContainer").show(1000);
       const category = $("#category").val();
       const country = $("#country").val();
       const minGoal = $("#min-goal").val();
@@ -73,8 +72,8 @@ $(document).ready(function(){
         console.log("No input");
         console.log(category+country+minGoal+maxGoal);
         return;
-      };
-
+      }
+        
       $.ajax({
         url: "/api/"+country+"/"+category+"/?goal1="+minGoal+"&goal2="+maxGoal,
         method: "get"}).then(function(response) {
@@ -88,7 +87,7 @@ $(document).ready(function(){
 
           const noResults = '<span class="light-green-text text-accent-3">Unfortunately your search had no results</span>';
           M.toast({html: noResults});
-        };
+        } else {
         // ####### Success/Fail Pie Chart ########
           $(function () {
             $('#pieChart').highcharts({
@@ -154,10 +153,12 @@ $(document).ready(function(){
             <td> ${response.failureResults[i].backers} </td>`);
           }
         };
+        $("#resultsContainer").show(1000);
         loopSuccessResults();
         loopFailureResults();
-
+        };//end else statement
       });
+    
       insertNewSearch();
     
   });

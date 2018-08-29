@@ -61,13 +61,14 @@ module.exports = function(app) {
             successPercentage: 'null',
             failurePercentage: 'null',
           });
-        };
+        } else {
       res.json({ 
         successfulResults: successfulResults,
         successPercentage: successPercentage,
         failureResults: failureResults,
         failurePercentage: failurePercentage 
       });
+    };
     });
       
   });
